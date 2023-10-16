@@ -1,0 +1,80 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass[11pt,letterpaper]{article}
+\usepackage{mystyle}
+
+\begin{document}
+Michael D. Peckham Jr.
+
+\begin{center}
+\textbf{{\Large MATH-112 Homework 1}}\medskip
+\end{center}
+
+\begin{mdframed}[style=MyFrame]
+\textbf{Problem 2}
+
+\enuma0
+    \item Let $p\in \mathbb{N}$ be a prime number. Let $q\in\mathbb{Q}$ be a
+    rational number. Show
+    that $q$ can be written as $q=\frac{n}{m}$ where at least one of $m$ and $n$ is not
+    divisible by $p$.
+    \item Say that two integers $n,m\in\mathbb{Z}$ are \textbf{co-prime} if there
+    is no
+    prime number $p$ such that $p$ divides both $n$ and $m$.
+    Show that any rational number $q$ can be written as $q=\frac{n}{m}$ for some
+    integers $n$ and $m$ which are co-prime.
+\denuma
+\end{mdframed}
+
+\textbf{(2.a):} Let $p\in \mathbb{N}$ be prime and $q\in \mathbb{Q}$ be rational.
+By definition, we may express:
+\[
+    q = \frac{a}{b},
+\] for some integers $a,b$ with $b>0.$
+If $p\nmid a$ and/or $p\nmid b,$ we are done.
+Now consider the case where $p\mid a$ and $p\mid b.$
+By the Fundemental Theorem of Arithmetic, we may factor:
+\[
+    a = p^{ord_p(a)} a',\quad b = p^{ord_p(b)} b',
+\] where $p\nmid a',b'$ and $ord_p(a),ord_p(b)\geq 1.$
+Then:
+\[ 
+    \frac{a}{b} 
+        = \frac{p^{ord_p(a)} a'}{p^{ord_p(b)} b'} 
+        = p^{ord_p(a) - ord_p(b)} \frac{a'}{b'}.
+\]
+Now, we reduce to casework.
+\enumi3
+    \item Consider $ord_p(a) = ord_p(b).$ Then:
+        \[
+            \frac{a}{b} = \frac{a'}{b'}, 
+        \] where $p\nmid a',b',$ as desired.
+    \item Consider $ord_p(a) > ord_p(b).$ Then:
+        \[
+            \frac{a}{b} = \frac{p^{ord_p(a) - ord_p(b)} a'}{b'} = \frac{a''}{b'},
+        \] where $p\nmid b',$ as desired.
+    \item Consider $ord_p(a) < ord_p(b).$ Then:
+        \[
+            \frac{a}{b} = \frac{a'}{p^{ord_p(b)-ord_p(a)} b'} = \frac{a'}{b''},
+        \] where $p\nmid a',$ as desired.
+\denumi
+We are done.\\
+\rightline{$\square$}
+
+\textbf{(2.b):} Let $q\in \mathbb{Q}.$ By definition, we may express:
+\[
+    q = \frac{a}{b},
+\] for some integers $a,b$ with $b>0.$
+If $(a,b) = 1,$ we're done.
+Now consider $(a,b) = d > 1.$
+By the Fundemental Theorem of Arithmetic, we may factor:
+\[
+    a = p_1^{e_1} p_2^{e_2} \cdots p_k^{e_k} a',\quad b = p_1^{f_1} p_2^{f_2}\cdots p_k^{f_k} b',\quad (a',b')=1,
+\] for some positive integers $k,e_i\coloneqq ord_{p_i}(a),f_i\coloneqq ord_{p_i}(b)$ and set $\{p_i\}$ of prime integers.
+Then $d \coloneqq \prod_{i=1}^k p_i^{\min(e_i,f_i)}$ and:
+\[
+    \frac{a}{b} = \frac{a' \prod_{e_i > f_i} p_i^{e_i - f_i}}{b' \prod_{e_j < f_j} p_j^{f_j - e_j}} = \frac{a''}{b''},
+\] where $(a'',b'') = 1,$ as desired.
+We are done.\\
+\rightline{$\square$}
+
+\end{document}

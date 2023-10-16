@@ -1,0 +1,77 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mystyle}[2023/09/18 mystyle]
+
+\usepackage{amsmath, amssymb, amsthm, amsfonts, mathtools}
+\usepackage{amscd,amsxtra}
+%\usepackage[mathscr]{eucal}
+\usepackage[all,cmtip]{xy}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx, quiver}
+\usepackage{multicol}
+\usepackage{xcolor, bbold}
+\usepackage{tikz-cd}
+\usepackage[export]{adjustbox}
+\usepackage[usestackEOL]{stackengine}
+\usepackage{dcolumn,subfig}
+\usepackage{float}
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\usepackage{enumitem, quoting}
+\usepackage{color, colortbl}
+\newcolumntype{2}{D{.}{}{2.0}}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{-0.5in}
+\setlength{\textheight}{8.9in}
+\setlength{\parskip}{0.35em}
+\parindent0em
+\DeclareMathOperator{\supp}{Supp}
+\def\R{\mathbb{R}}
+\def\rp{\mathbb{RP}}
+\def\Q{\mathbb{Q}}
+\def\N{\mathbb{N}}
+\def\Z{\mathbb{Z}}
+\def\C{\mathbb{C}}
+\def\T{\mathcal{T}}
+\def\ord{\text{ord}}
+\def\im{\text{Im}}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\newcommand{\e}{\ensuremath{ \mbox{\scriptsize{E}} }}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{collectbox}
+\usepackage[framemethod=TikZ]{mdframed}
+\mdfdefinestyle{MyFrame}{%
+    outerlinewidth=0.5pt,
+    innertopmargin=10pt,
+    innerbottommargin=10pt,
+    innerrightmargin=10pt,
+    innerleftmargin=10pt,
+    backgroundcolor=gray!20!white}
+
+\makeatletter
+\newcommand\centrulefill{\leavevmode
+\begingroup % local length assignments!
+\setlength{\dimen@}{0.5ex}% or whatever positioning
+\addtolength{\dimen@}{0.4pt}% or whatever thickness
+\leaders\hrule height\dimen@ depth -.5ex \hfill
+\endgroup
+\kern\z@}
+
+\def\enuma#1{\begin{enumerate}[label = {(\alph*)}, topsep={#1}px, itemsep=3px]}
+\def\denuma{\end{enumerate}}
+
+\def\enumi#1{\begin{enumerate}[label = {(\roman*)}, topsep={#1}px, itemsep=3px]}
+\def\denumi{\end{enumerate}}
+
+\def\enumn#1{\begin{enumerate}[label = {(\arabic*)}, topsep={#1}px, itemsep=3px]}
+\def\denumn{\end{enumerate}}
+
+\def\line{\vspace{-5px}
+\hrulefill
+\vspace{0px}}
+
+\pgfplotsset{compat=1.18}
