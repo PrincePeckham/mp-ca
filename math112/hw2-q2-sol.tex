@@ -1,0 +1,98 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass[11pt,letterpaper]{article}
+\usepackage{mystyle}
+
+\begin{document}
+Michael D. Peckham Jr.
+
+\begin{center}
+\textbf{{\Large MATH-112 Homework 2}}\medskip
+\end{center}
+
+\begin{mdframed}[style=MyFrame]
+\textbf{Problem 2}
+
+\enuma0
+\item Let $(X,d)$ be a metric space. Prove that $X$ and $\emptyset$ are both
+open and closed.
+
+\item For $x,y\in\R$, define:
+    \[
+        d_1(x,y)=|x-y|^3,\quad 
+        d_2(x,y)=|x^2-y^2|,\quad
+        d_3(x,y)=\frac{|x-y|}{1+|x-y|}.
+    \]
+    Determine for each of these functions whether it defines a metric on $\R$.
+\denuma
+\end{mdframed}
+
+\textbf{(2.a):} Below is a proof of each without relying on complements (which halves the problem):
+\enumi3
+    \item For every point $x\in X$ and epsilon-neighborhood $N(x,\varepsilon)$ of $x,$ it must be that $N(x,\varepsilon)\subseteq X$ since $X$ contains all points, meaning $X=\mathring{X}.$
+    \item Since $X$ is the entire set it must contain all of its limit points, meaning $X = \overline{X}.$
+    \item Since $\emptyset$ contains no non-interior points, it is vacuously true that $\emptyset = \mathring{\emptyset}$.
+    \item Since $\emptyset$ contains no points, for any $x\in X$ and $y\in N(x,\varepsilon),$ we have $y\not\in \emptyset.$ 
+        Thus, the emptyset has no limit points, meaning $\emptyset = \overline{\emptyset}.$
+\denumi
+We are done.\\
+\rightline{$\square$}
+
+\textbf{(2.b):} Consider each function:
+\enumi3
+    \item Let $x=0,\: y=1,\: z=2.$ Then:
+        \[
+            d_1(x,z) = |0-2|^3 = 8 \not\leq 2 = |0-1|^3 + |1-2|^3 = d_1(x,y) + d_1(y,z),
+        \] failing the triangle inequality.
+        Thus, $d_1$ \textbf{is not} a metric on $\R$.
+    \item Let $x=1,\: y=-1.$ Then:
+        \[
+            d_2(x,y) = |(1)^2 - (-1)^2| = 0,
+        \] but $x\neq y.$
+        Thus, $d_2$ \textbf{is not} a metric on $\R$.
+    \item First, since $|x-y|\geq 0,\: 1 + |x-y|\geq 1,$ we have $d_3(x,y)\geq 0$ for all $x,y.$
+        Also, we see:
+        \[
+            d_3(x,y) = 0 \Longleftrightarrow 
+            \frac{|x-y|}{1 + |x-y|} = 0 \Longleftrightarrow
+            |x-y| = 0\Longleftrightarrow
+            x = y,
+        \] since $|x-y|$ is a metric on $\R.$ 
+        Thus, the first property of a metric holds for $d_3.$
+        Now, since $|x-y|$ is a metric on $\R$, we know $|x-y|=|y-x|,$ giving us:
+        \begin{align*}
+            d_3(x,y) 
+                &= \frac{|x-y|}{1 + |x-y|}\\
+                &= \frac{|y-x|}{1 + |y-x|}\\
+                &= d_3(y,x).
+        \end{align*}
+        Thus, the second property of a metric holds for $d_3.$
+        Finally, since $|x-y|$ is a metric on $\R$, we know:
+            \[
+                |x-z|\leq |x-y| + |y-z| 
+                    \Longleftrightarrow 
+                        \frac{1}{|x-z|}\geq \frac{1}{|x-y| + |y-z|}
+                    \Longleftrightarrow 
+                        1 - \frac{1}{|x-z|}\leq 1 - \frac{1}{|x-y| + |y-z|}.
+            \]
+        We now observe:
+        \begin{align*}
+            d_3(x,z)
+                &= \frac{|x-z|}{1 + |x-z|}\\
+                &= 1 - \frac{1}{1 + |x-z|}\\
+                &\leq 1 - \frac{1}{1 + |x-y| + |y-z|}\\
+                &= \frac{|x-y| + |y-z|}{1 + |x-y| + |y-z|}\\
+                &= \frac{|x-y|}{1 + |x-y| + |y-z|} + \frac{|y-z|}{1 + |x-y| + |y-z|}\\
+                &\leq \frac{|x-y|}{1 + |x-y|} + \frac{|y-z|}{1 + |y-z|}\\
+                &= d_3(x,y) + d_3(y,z),
+        \end{align*}
+        which gives us:
+        \[
+            d_3(x,z) \leq d_3(x,y) + d_3(y,z).
+        \]
+        Thus, the third (and final) property of a metric holds for $d_3,$
+        meaning $d_3$ \textbf{is} a metric on $\R.$
+\denumi
+We are done.\\
+\rightline{$\square$}
+
+\end{document}
